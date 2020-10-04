@@ -36,8 +36,7 @@ Vector<T>::Vector() {
 
 template <typename T> 
 Vector<T>::~Vector() {
-	if(A != nullptr)
-		delete[] A;
+	delete[] A;
 }
 
 template <typename T> 
