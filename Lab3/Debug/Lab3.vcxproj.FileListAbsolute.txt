@@ -1,0 +1,2 @@
+D:\Programming\Labs C++ Varian3\Lab3\Debug\Lab3.exe
+D:\Programming\Labs C++ Varian3\Lab3\Debug\Lab3.pdb
