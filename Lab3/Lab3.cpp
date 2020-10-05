@@ -6,7 +6,7 @@ using namespace std;
 
 const int SIZE = 10;
 
-template <class T> 
+template <class T>
 class Vector {
 public:
 	Vector(T* massive);
@@ -20,27 +20,25 @@ public:
 	T getSumAfterMinElem();
 
 private:
-	void permutation(T& elem1, T& elem2);
 	T* A;
 };
 
-template <typename T> 
+template <typename T>
 Vector<T>::Vector(T* massive) {
 	A = massive;
 }
 
-template <typename T> 
+template <typename T>
 Vector<T>::Vector() {
 	A = nullptr;
 }
 
-template <typename T> 
+template <typename T>
 Vector<T>::~Vector() {
-	if(A != nullptr)
-		delete[] A;
+	delete[] A;
 }
 
-template <typename T> 
+template <typename T>
 void Vector<T>::showMassive() {
 	for (int i = 0; i < SIZE; i++) {
 		cout << "A[" << i << "] = " << A[i] << " " << endl;
@@ -48,27 +46,17 @@ void Vector<T>::showMassive() {
 	cout << endl;
 }
 
-template <typename T> 
+template <typename T>
 void Vector<T>::sort() {
-	for (int i = 0; i < SIZE - 2; i++) {
-		if (i % 2 == 0) {
-			for (int j = i + 2; j < SIZE; j += 2) {
-				permutation(A[i], A[j]);
-			}
-		} else {
-			for (int j = i + 2; j < SIZE; j += 2) {
-				permutation(A[j], A[i]);
+	cout << "cort: " << endl;
+	for (int i = 0; i < SIZE - 1; i++) {
+		for (int j = i + 1; j < SIZE; j++) {
+			if (A[j] - A[i] < EPSILON) {
+				T temp = A[j];
+				A[j] = A[i];
+				A[i] = temp;
 			}
 		}
-	}
-}
-
-template <typename T> 
-void Vector<T>::permutation(T& elem1, T& elem2) {
-	if (elem1 - elem2 < EPSILON) {
-		T temp = elem1;
-		elem1 = elem2;
-		elem2 = temp;
 	}
 }
 
@@ -95,7 +83,7 @@ T Vector<T>::getAvarageElemsValue() {
 }
 
 template <typename T>
-T Vector<T>::getMaxElem(){
+T Vector<T>::getMaxElem() {
 	T maxElem = A[0];
 	for (int i = 1; i < SIZE; i++) {
 		if (maxElem < A[i]) {
