@@ -1,0 +1,5 @@
+﻿  Lab4.cpp
+D:\Programming\Labs C++ Variant3\Lab4\Lab4.cpp(115,1): warning C4293: >>: отрицательное или слишком большое смещение; поведение не определено
+D:\Programming\Labs C++ Variant3\Lab4\Lab4.cpp(149,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Programming\Labs C++ Variant3\Lab4\Lab4.cpp(156): warning C4172: возвращение адреса локальной или временной переменной : грузы
+  Lab4.vcxproj -> D:\Programming\Labs C++ Variant3\Lab4\Debug\Lab4.exe

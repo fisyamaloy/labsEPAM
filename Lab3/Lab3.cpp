@@ -1,5 +1,6 @@
 ﻿
 #include <iostream>
+#include <ctime>
 #define EPSILON 0.00001
 
 using namespace std;
@@ -9,7 +10,7 @@ const int SIZE = 10;
 template <class T>
 class Vector {
 public:
-	Vector(T* massive);
+	Vector(T*& massive);
 	Vector();
 	~Vector();
 	void sort();
@@ -24,13 +25,16 @@ private:
 };
 
 template <typename T>
-Vector<T>::Vector(T* massive) {
+Vector<T>::Vector(T*& massive) {
 	A = massive;
 }
 
 template <typename T>
 Vector<T>::Vector() {
-	A = nullptr;
+	A = new int[10];
+	for (int i = 9; i >= 0; i--) {
+		A[i] = i;
+	}
 }
 
 template <typename T>
@@ -48,7 +52,7 @@ void Vector<T>::showMassive() {
 
 template <typename T>
 void Vector<T>::sort() {
-	cout << "cort: " << endl;
+	cout << "sort: " << endl;
 	for (int i = 0; i < SIZE - 1; i++) {
 		for (int j = i + 1; j < SIZE; j++) {
 			if (A[j] - A[i] < EPSILON) {
@@ -114,10 +118,13 @@ T Vector<T>::getSumAfterMinElem() {
 template <typename T>
 void fillMassive(T*& T1);
 
+template <typename T>
+void fillMassiveBtRandomValues(T*& A);
+
 int main()
 {
 	int* A;
-	fillMassive(A);
+	fillMassiveBtRandomValues(A);
 	Vector<int> v(A);
 	v.showMassive();
 	v.sort();
@@ -127,17 +134,28 @@ int main()
 	cout << "Maximum elem is " << v.getMaxElem() << endl;
 
 	double* B;
-	fillMassive(B);
+	fillMassiveBtRandomValues(B);
 	Vector<double> v1(B);
 	v1.showMassive();
 	cout << "sum after minimum elem is " << v1.getSumAfterMinElem() << endl;
 }
 
-template <typename T> void fillMassive(T*& A) {
+template <typename T> 
+void fillMassive(T*& A) {
 	A = new T[SIZE];
 	cout << "input " << SIZE << " elems" << endl;
 
 	for (int i = 0; i < SIZE; i++) {
 		cin >> A[i];
+	}
+}
+
+template <typename T>
+void fillMassiveBtRandomValues(T*& A) {
+	A = new T[SIZE];
+
+	srand(time(0));
+	for (int i = 0; i < SIZE; i++) {
+		A[i] = 0.1 * (rand() % 200 - 100); // -20 до 19
 	}
 }
