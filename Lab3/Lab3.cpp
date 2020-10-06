@@ -116,15 +116,12 @@ T Vector<T>::getSumAfterMinElem() {
 }
 
 template <typename T>
-void fillMassive(T*& T1);
-
-template <typename T>
-void fillMassiveBtRandomValues(T*& A);
+void fillMassiveByRandomValues(T*& A);
 
 int main()
 {
 	int* A;
-	fillMassiveBtRandomValues(A);
+	fillMassiveByRandomValues(A);
 	Vector<int> v(A);
 	v.showMassive();
 	v.sort();
@@ -134,24 +131,14 @@ int main()
 	cout << "Maximum elem is " << v.getMaxElem() << endl;
 
 	double* B;
-	fillMassiveBtRandomValues(B);
+	fillMassiveByRandomValues(B);
 	Vector<double> v1(B);
 	v1.showMassive();
 	cout << "sum after minimum elem is " << v1.getSumAfterMinElem() << endl;
 }
 
-template <typename T> 
-void fillMassive(T*& A) {
-	A = new T[SIZE];
-	cout << "input " << SIZE << " elems" << endl;
-
-	for (int i = 0; i < SIZE; i++) {
-		cin >> A[i];
-	}
-}
-
 template <typename T>
-void fillMassiveBtRandomValues(T*& A) {
+void fillMassiveByRandomValues(T*& A) {
 	A = new T[SIZE];
 
 	srand(time(0));
