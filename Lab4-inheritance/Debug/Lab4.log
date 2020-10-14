@@ -1,0 +1,4 @@
+﻿  Lab4.cpp
+C:\Users\User\Desktop\Lab4\Lab4.cpp(149,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\User\Desktop\Lab4\Lab4.cpp(156): warning C4172: возвращение адреса локальной или временной переменной : massive
+  Lab4.vcxproj -> C:\Users\User\Desktop\Lab4\Debug\Lab4.exe
