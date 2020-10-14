@@ -1,0 +1,30 @@
+﻿  ConsoleApplication2.cpp
+D:\Programming\Labs C++ Variant3\Lab6-generic\ConsoleApplication2.cpp(13,16): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Programming\Labs C++ Variant3\Lab6-generic\ConsoleApplication2.cpp(13,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Programming\Labs C++ Variant3\Lab6-generic\ConsoleApplication2.cpp(70): message : выполняется компиляция ссылки на экземпляр шаблон функции "void fillMassive<int>(T *&,int &)"
+          with
+          [
+              T=int
+          ]
+D:\Programming\Labs C++ Variant3\Lab6-generic\ConsoleApplication2.cpp(17,22): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Programming\Labs C++ Variant3\Lab6-generic\ConsoleApplication2.cpp(23,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Programming\Labs C++ Variant3\Lab6-generic\ConsoleApplication2.cpp(71): message : выполняется компиляция ссылки на экземпляр шаблон функции "void showMassive<int>(T *&,const unsigned int)"
+          with
+          [
+              T=int
+          ]
+D:\Programming\Labs C++ Variant3\Lab6-generic\ConsoleApplication2.cpp(43,12): warning C4244: return: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Programming\Labs C++ Variant3\Lab6-generic\ConsoleApplication2.cpp(72): message : выполняется компиляция ссылки на экземпляр шаблон функции "T getMax<int>(T *&,int)"
+          with
+          [
+              T=int
+          ]
+  ConsoleApplication2.vcxproj -> D:\Programming\Labs C++ Variant3\Lab6-generic\x64\Debug\ConsoleApplication2.exe
