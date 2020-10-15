@@ -1,0 +1,2 @@
+D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\cards\Debug\cards.exe
+D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\cards\Debug\cards.pdb
