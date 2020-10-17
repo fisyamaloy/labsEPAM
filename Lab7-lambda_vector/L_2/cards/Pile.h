@@ -1,17 +1,16 @@
 #pragma once
 #include <vector>
-#include "Constants.h"
-#include "Card.h"
 #include <cassert>
 
 class Pile {
 public:
-	Card getCard(const int index) {
+
+	Card getCard(const int index) const {
 		assert(index >= 0 && index < cards.size());
 		return cards[index];
 	}
 
-	int getSize() {
+	int getSize() const {
 		return cards.size();
 	}
 

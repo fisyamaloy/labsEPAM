@@ -1,5 +1,4 @@
 #pragma once
-#include "Constants.h"
 #include "Suits.h"
 #include "Ranks.h"
 #include <string>
@@ -7,7 +6,7 @@
 class Card {
 public:
 	Card() {
-
+	
 	}
 
 	Card(int index) {
@@ -20,26 +19,22 @@ public:
 		this->rank = rank;
 	}
 
-	int getIndex() {
-		return suit * Constants::RANK_COUNT + rank;
-	}
-
-	int getSuit() {
+	constexpr int getSuit() {
 		return suit;
 	}
 
-	int getRank() {
+	constexpr int getRank() {
 		return rank;
 	}
 
-	friend std::ostream& operator<<(std::ostream& os, const Card& card);
+	friend std::ostream& operator<<(std::ostream& os, const Card& const card);
 
 private:
 	int suit;
 	int rank;
 };
 
-std::ostream& operator<<(std::ostream& os, const Card& card) {
+std::ostream& operator<<(std::ostream& os, const Card& const card) {
 	auto getCaptureCardSuit = [](Card card) {
 		switch (card.getSuit()) {
 		case Suits::CHIRVA:
@@ -50,6 +45,8 @@ std::ostream& operator<<(std::ostream& os, const Card& card) {
 			return "Пика";
 		case Suits::TAMBOURINE:
 			return "Бубна";
+		default:
+			return "Unknown";
 		}
 	};
 
