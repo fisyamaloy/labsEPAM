@@ -1,0 +1,17 @@
+﻿  Source.cpp
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(40,17): warning C4305: инициализация: усечение из "int" в "char"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(40,13): warning C4309: инициализация: усечение константного значения
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(50,3): error C2360: пропуск инициализации "a" из-за метки "case"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(40): message : см. объявление "a"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(53,3): error C2360: пропуск инициализации "a" из-за метки "case"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(40): message : см. объявление "a"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(56,3): error C2360: пропуск инициализации "a" из-за метки "case"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(40): message : см. объявление "a"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(59,3): error C2360: пропуск инициализации "a" из-за метки "case"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(40): message : см. объявление "a"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(65,3): error C2360: пропуск инициализации "a" из-за метки "case"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(40): message : см. объявление "a"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(68,3): error C2360: пропуск инициализации "a" из-за метки "case"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(40): message : см. объявление "a"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(74,3): error C2361: пропуск инициализации "a" из-за метки "default"
+D:\Programming\Labs C++ Variant3\Lab8-TextFile\Source.cpp(40): message : см. объявление "a"
