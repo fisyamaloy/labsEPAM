@@ -24,26 +24,27 @@ int main() {
 	ex1(n);
 	showVector(vec);
 
-	auto ex2 = [n](int k) {
+	auto ex2 = [n, &vec](int k) {
+		int i = 0;
 		if (k <= n) {
-			vector<int> newVector;
-			int i;
-			for (i = k; i < n; i++) {
-				newVector.push_back(i);
-			}
-			for (i; i < n + k; i++) {
-				newVector.push_back(i);
+			int size = vec.size();
+			for (i; i < k; ++i) {
+				vec.erase(vec.begin());
 			}
 
-			return newVector;
-		} else {
+			for (int j = size; j < size + k; ++j) {
+				vec.push_back(j);
+			}
+		}
+		else {
 			cout << "k must be less then size of vector" << endl;
 		}
+
 	};
 
 	cout << "input k elems: " << endl;
 	int k;
 	cin >> k;
-	vector<int> v = ex2(k);
-	showVector(v);
+	ex2(k);
+	showVector(vec);
 }

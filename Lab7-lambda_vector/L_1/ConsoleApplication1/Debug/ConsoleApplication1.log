@@ -1,3 +1,2 @@
 ﻿  ConsoleApplication1.cpp
-D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_1\ConsoleApplication1\ConsoleApplication1.cpp(42): warning C4715: <lambda_9e09c58a8bf7ef7f024af20586a42a06>::operator(): значение возвращается не при всех путях выполнения
   ConsoleApplication1.vcxproj -> D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_1\ConsoleApplication1\Debug\ConsoleApplication1.exe

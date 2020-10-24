@@ -1,0 +1,5 @@
+﻿  Source.cpp
+D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\Money\Money.h(21,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\Money\Money.h(92,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\Money\Money.h(93,51): warning C4390: ";": обнаружен пустой контролируемый оператор; это правильно?
+  Money.vcxproj -> D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\Money\Debug\Money.exe
