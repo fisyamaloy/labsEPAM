@@ -1,5 +1,4 @@
 #include "Functions.h"
-#include "nlohmann/json.hpp"
 
 void dataLoad(std::vector<Data>& people, const std::string fileName) {
 	std::ifstream fin(fileName);
@@ -26,18 +25,21 @@ void dataLoad(std::vector<Data>& people, const std::string fileName) {
 }
 
 void addDataToVectorAndFile(std::vector<Data>& people, std::ofstream& fout) {
-	std::cout << "При окончании ввода данных введите 0 " << std::endl;
-
-	int a = -1;
-
 	Initials initials;
 	BirthDate date;
 	std::string sex;
-	while (a != 0) {
+
+	std::string a = "-1";
+	while (a != "0") {
+		std::cout << "ФИО: ";
 		std::cin >> initials.firstName >> initials.lastName >> initials.middleName;
+		std::cout << "Дата рождения: ";
 		std::cin >> date.day >> date.month >> date.year;
+		std::cout << "Пол: ";
 		std::cin >> sex;
 		people.push_back(Data(initials, date, sex));
+		std::cout << "================" << std::endl;
+		std::cout << "Введите 0, если хотите закончить ввод (иначе любой символ)";
 
 		std::cin >> a;
 	}

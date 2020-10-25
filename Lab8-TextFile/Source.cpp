@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "Functions.h"
+#include <Windows.h>
 #define EXIT 0
 
 using namespace std;
@@ -22,30 +23,24 @@ void displayMenu() {
 
 int main() {
 	setlocale(LC_ALL, "ru");
-	displayMenu();
-	cin >> menuState;
 
 	std::vector<Data> people;
 
 	string fileName = "asd.txt";
-	while (menuState != EXIT) {
+	do {
+		system("cls");
+		displayMenu();
+		cin >> menuState;
+
 		switch (menuState) {
 		case 0:
 			exit(EXIT);
 		case 1:
-			system("cls");
 			dataLoad(people, fileName);
 			break;
 		case 2:
-			char a = '-1';
-			while (a != '0') {
-				dataInput(people, fileName);
-				cout << "Введите любой символ, кроме 0, если желаете продолжить: " << endl;
-				cin >> a;
-				if (a == '0') {
-					break;
-				}
-			}
+			dataInput(people, fileName);
+			cout << "=======================" << endl;
 			break;
 		case 3:
 			dataAppend(people, fileName);
@@ -74,5 +69,6 @@ int main() {
 		default:
 			cout << "Введите корректное число" << endl;
 		}
-	}
+	} while (menuState != EXIT);
+	
 }
