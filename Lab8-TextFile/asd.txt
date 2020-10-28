@@ -1,0 +1,34 @@
+
+ФИО: Fisyuk Danil Sergeevich
+Дата: 6 8 2001
+Пол: man
+ФИО: Plotko Anton Aleksandrovich
+Дата: 17 8 2002
+Пол: man
+ФИО: Adss asdasd a
+Дата: 31 4 2000
+Пол: woman
+ФИО: Ghkgjhkgh fhjfgj fghj
+Дата: 31 1 1970
+Пол: woman
+ФИО: Sdfgsdfhg dhdg fgh
+Дата: 23 6 1965
+Пол: man
+ФИО: Fisyuk Danil Sergeevich
+Дата: 6 8 2001
+Пол: man
+ФИО: Plotko Anton Aleksandrovich
+Дата: 17 8 2002
+Пол: man
+ФИО: Adss asdasd a
+Дата: 31 4 2000
+Пол: woman
+ФИО: Ghkgjhkgh fhjfgj fghj
+Дата: 31 1 1970
+Пол: woman
+ФИО: Sdfgsdfhg dhdg fgh
+Дата: 23 6 1965
+Пол: man
+ФИО: dfgjhdfkg gdf ghj
+Дата: 2 11 1945
+Пол: woman

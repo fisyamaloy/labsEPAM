@@ -4,7 +4,7 @@
 #include <vector>
 
 void dataLoad(std::vector<Data>& people, const std::string fileName);
-void dataInput(std::vector<Data>& people, const std::string fileName);
+void dataInput(std::vector<Data>& people);
 void dataAppend(std::vector<Data>& people, const std::string fileName);
 void dataSortByLastName(std::vector<Data>& people);
 void dataSortByAge(std::vector<Data>& people);

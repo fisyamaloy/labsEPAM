@@ -28,9 +28,7 @@ int main() {
 		int i = 0;
 		if (k <= n) {
 			int size = vec.size();
-			for (i; i < k; ++i) {
-				vec.erase(vec.begin());
-			}
+			vec.erase(vec.begin(), vec.begin() + k);
 
 			for (int j = size; j < size + k; ++j) {
 				vec.push_back(j);

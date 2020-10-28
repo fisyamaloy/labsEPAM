@@ -19,15 +19,16 @@ Data::Data(Initials initials, BirthDate date, std::string sex) {
 
 	this->date.day = date.day;
 	this->date.month = date.month;
-	this->date.year = date.month;
+	this->date.year = date.year;
 
 	this->sex = sex;
 }
 
-std::ostream& operator<<(std::ostream& os, Data d) {
-	os << "ФИО: " << d.initials.firstName << " " << d.initials.lastName << " " << d.initials.middleName << std::endl;
-	os << "Дата: " << d.date.day << d.date.month << d.date.year << std::endl;
-	os << "Пол: " << d.sex << std::endl;
+std::ostream& operator<<(std::ostream& os, const Data d) {
+	os << std::endl;
+	os << "ФИО: " << d.initials.lastName << " " << d.initials.firstName << " " << d.initials.middleName << std::endl;
+	os << "Дата: " << d.date.day << " " << d.date.month << " " << d.date.year << std::endl;
+	os << "Пол: " << d.sex;
 	return os;
 }
 
@@ -38,7 +39,7 @@ Data& Data::operator=(Data d) {
 
 	this->date.day = d.date.day;
 	this->date.month = d.date.month;
-	this->date.year = d.date.month;
+	this->date.year = d.date.year;
 
 	this->sex = d.sex;
 	return *this;

@@ -38,7 +38,7 @@ public:
 		return sex;
 	}
 
-	friend std::ostream& operator<<(std::ostream& os, Data d);
+	friend std::ostream& operator<<(std::ostream& os, const Data d);
 	Data& operator=(Data d);
 };
 
