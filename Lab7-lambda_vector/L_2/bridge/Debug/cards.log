@@ -1,8 +1,0 @@
-﻿  source.cpp
-D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\bridge\Card.h(30,74): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\bridge\Card.h(37,66): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\bridge\Pile.h(9,3): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\bridge\Deck.h(21,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\bridge\Deck.h(22,27): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\bridge\source.cpp(16): warning C4172: возвращение адреса локальной или временной переменной : piles
-  cards.vcxproj -> D:\Programming\Labs C++ Variant3\Lab7-lambda_vector\L_2\bridge\Debug\cards.exe
