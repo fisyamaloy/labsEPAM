@@ -1,33 +1,20 @@
 #pragma once
-#include <exception>
+#include "ContainersExceptions.h"
 
-class VectorException : public std::exception {
+class VectorException : public ContainersExceptions {
 public:
-	VectorException(int dataState = 0) {
-		this->dataState = dataState;
+	VectorException(int dataState = 0) : ContainersExceptions(dataState) {
+		
 	}
-
-	const int getDataState() const {
-		return dataState;
-	}
-
-	enum ErrorsCodes {
-		OUT_OF_RANGE = -1,
-		VECTOR_IS_EMPTY = 0,
-	};
 
 	const char* what() const override {
 		switch (dataState) {
 		case OUT_OF_RANGE:
 			return "Out of range, man.\n";
-		case VECTOR_IS_EMPTY:
+		case CONTAINER_IS_EMPTY:
 			return "Vector is empty\n";
 		default:
-			return "I dont know what happends\n";
+			return "I dont know what happend\n";
 		}
-
 	}
-
-private:
-	int dataState;
 };
