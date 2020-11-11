@@ -2,7 +2,7 @@
 #include "VectorException.h"
 
 template<class T>
-class Vector : VectorException {
+class Vector : public VectorException {
 private:
 	T* A;
 	size_t vSize;
@@ -29,14 +29,14 @@ public:
 		return vSize > 0 ? A[0] : throw VectorException(ErrorsCodes::OUT_OF_RANGE);
 	}
 	T& at(const int index) const {
-		return index < vSize ? A[index] : throw VectorException(ErrorsCodes::OUT_OF_RANGE);
+		return index < vSize ? A[index] : throw VectorException(OUT_OF_RANGE);
 	}
 
 	void pop_front() {
-		vSize > 0 ? erase(0, 0) : throw VectorException(ErrorsCodes::VECTOR_IS_EMPTY);
+		vSize > 0 ? erase(0, 0) : throw VectorException(ErrorsCodes::CONTAINER_IS_EMPTY);
 	}
 	void pop_back() {
-		vSize > 0 ? erase(vSize - 1, vSize - 1) : throw VectorException(ErrorsCodes::VECTOR_IS_EMPTY);
+		vSize > 0 ? erase(vSize - 1, vSize - 1) : throw VectorException(ErrorsCodes::CONTAINER_IS_EMPTY);
 	}
 	void push_front(const T& elem);
 	void push_back(const T& elem);
@@ -48,7 +48,6 @@ public:
 	T& operator[](const int index) const {
 		return A[index];
 	}
-
 	friend std::ostream& operator<<(std::ostream& os, const Vector& v) {
 		for (int i = 0; i < v.vSize; ++i) {
 			os << v[i] << " ";

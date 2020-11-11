@@ -142,6 +142,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ContainersExceptions.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VectorException.h" />
   </ItemGroup>

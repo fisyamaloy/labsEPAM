@@ -2,6 +2,12 @@
 #include "Vector.h"
 
 int main() {
+	Vector<double> v1;
+	try {
+		v1.pop_back();
+	} catch (std::exception& e) {
+		std::cerr << e.what();
+	}
 	Vector<int> v(5);
 	std::cout << v;
 	for (int i = 0; i < v.getSize(); ++i) {

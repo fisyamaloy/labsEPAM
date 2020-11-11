@@ -26,5 +26,8 @@
     <ClInclude Include="VectorException.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="ContainersExceptions.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
