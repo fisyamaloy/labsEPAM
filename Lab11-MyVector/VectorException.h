@@ -4,7 +4,6 @@
 class VectorException : public ContainersExceptions {
 public:
 	VectorException(int dataState = 0) : ContainersExceptions(dataState) {
-		
 	}
 
 	const char* what() const override {

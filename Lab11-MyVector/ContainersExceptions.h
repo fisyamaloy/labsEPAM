@@ -7,17 +7,17 @@ public:
 		this->dataState = dataState;
 	}
 
-	const int getDataState() const {
+	constexpr int getDataState() const {
 		return dataState;
 	}
-
-	enum ErrorsCodes {
-		OUT_OF_RANGE = -1,
-		CONTAINER_IS_EMPTY = 0,
-	};
 
 	virtual const char* what() const = 0;
 
 protected:
 	int dataState;
+
+	enum ErrorsCodes {
+		OUT_OF_RANGE = -1,
+		CONTAINER_IS_EMPTY = 0,
+	};
 };

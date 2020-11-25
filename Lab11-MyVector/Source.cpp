@@ -1,58 +1,44 @@
 ﻿#include <iostream>
 #include "Vector.h"
+#include <vector>
+#include <algorithm>
+#include "Timer.h"
+
+using namespace std;
+
+template <class T>
+void showVector(const Vector<T>& v) {
+	for (size_t i = 0; i < v.getSize(); ++i) {
+		cout << v[i] << ' ';
+	}
+	cout << endl;
+}
 
 int main() {
-	Vector<double> v1;
-	try {
-		v1.pop_back();
-	} catch (std::exception& e) {
-		std::cerr << e.what();
+	const size_t length = 300;
+	Vector<int> v1(length);
+	for (size_t i = 0; i < length; ++i) {
+		v1[i] = pow((-1), i) * (i + 5);
 	}
-	Vector<int> v(5);
-	std::cout << v;
-	for (int i = 0; i < v.getSize(); ++i) {
-		v[i] = i + 1;
+
+	vector<int>v2(length);
+	for (size_t i = 0; i < length; ++i) {
+		v2[i] = pow((-1), i) * (i + 5);
 	}
-	std::cout << v;
-	v.insert(3, 12312);
-	std::cout << v;
 
-	try {
-		v.pop_back();
-		v.pop_front();
-	} catch (const VectorException& e) {
-		std::cerr << e.what();
-	}
-	std::cout << v;
+	Timer t;
+	v1.sort();
+	cout << t.elapsed() << endl;
 
-	try {
-		v.erase(1, 2);
-	} catch (const std::exception& e) {
-		std::cerr << e.what();
-	}
-	std::cout << v;
-	
-	try {
-		v.pop_back();
-	} catch (const std::exception& e) {
-		std::cerr << e.what();
-	}
-	std::cout << v;
+	t.reset();
+	sort(v2.begin(), v2.end());
+	cout << t.elapsed() << endl;
 
-	v.push_back(10);
-	v.push_back(-5);
-	v.push_back(8);
-	std::cout << v;
+	t.reset();
+	v1.find(324);
+	cout << t.elapsed() << endl;
 
-	v.resize(30);
-	std::cout << v;
-	v.push_back(1232153);
-	v.push_front(-2324);
-	std::cout << v;
-
-	v.insert(2, 40);
-	std::cout << v;
-
-	v.erase(0, 4);
-	std::cout << v;
+	t.reset();
+	find(v2.begin(), v2.end(), 324);
+	cout << t.elapsed() << endl;
 }

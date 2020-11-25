@@ -29,5 +29,8 @@
     <ClInclude Include="ContainersExceptions.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

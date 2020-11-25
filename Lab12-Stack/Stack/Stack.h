@@ -27,17 +27,12 @@ public:
 	~Stack() {
 		clear();
 	}
-
-	// Добавить конструктор копирования.
-	// Разобраться с методом peek.
-	// Добавить метод swap.
-
 	void push(const T& data) override;
 	void pop() override;
-	const T& peek(unsigned position) const;
 	const T& top() const override;
 	void clear();
 };
+
 
 template<class T>
 void Stack<T>::push(const T& data) {
@@ -64,16 +59,6 @@ const T& Stack<T>::top() const {
 	} else {
 		throw StackException(ErrorsCodes::CONTAINER_IS_EMPTY);
 	}
-}
-
-template<class T>
-const T& Stack<T>::peek(unsigned position) const {
-	Node<T>* current = pHead;
-	for (unsigned i = 1; i <= position; ++i) {
-		current = current->pNext;
-	}
-
-	return current->data;
 }
 
 template<class T>

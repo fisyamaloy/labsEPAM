@@ -1,18 +1,21 @@
 #pragma once
 #include "VectorException.h"
 
+#ifndef _Vector
+#define _Vector
+
 template<class T>
-class Vector : public VectorException {
+class Vector {
 private:
 	T* A;
 	size_t vSize;
 	size_t maxSize;
 	void alloc_new();
 public:
-	Vector();
-	Vector(const size_t maxSize);
-	Vector(const T*& arr);
-	~Vector() {
+	Vector() noexcept;
+	Vector(const size_t maxSize) noexcept;
+	Vector(const Vector<T>& v) noexcept;
+	~Vector() noexcept {
 		delete[] A;
 	}
 
@@ -23,58 +26,81 @@ public:
 		return maxSize;
 	}
 	const T& back() const {
-		return vSize > 0 ? A[vSize - 1] : throw VectorException(ErrorsCodes::OUT_OF_RANGE);
+		return vSize > 0 ? A[vSize - 1] : throw VectorException(VectorException::ErrorsCodes::OUT_OF_RANGE);
 	}
 	const T& front() const {
-		return vSize > 0 ? A[0] : throw VectorException(ErrorsCodes::OUT_OF_RANGE);
-	}
-	T& at(const int index) const {
-		return index < vSize ? A[index] : throw VectorException(OUT_OF_RANGE);
+		return vSize > 0 ? A[0] : throw VectorException(VectorException::ErrorsCodes::OUT_OF_RANGE);
 	}
 
 	void pop_front() {
-		vSize > 0 ? erase(0, 0) : throw VectorException(ErrorsCodes::CONTAINER_IS_EMPTY);
+		vSize > 0 ? erase(0, 0) : throw VectorException(VectorException::ErrorsCodes::CONTAINER_IS_EMPTY);
 	}
 	void pop_back() {
-		vSize > 0 ? erase(vSize - 1, vSize - 1) : throw VectorException(ErrorsCodes::CONTAINER_IS_EMPTY);
+		vSize > 0 ? erase(vSize - 1, vSize - 1) : throw VectorException(VectorException::ErrorsCodes::CONTAINER_IS_EMPTY);
 	}
 	void push_front(const T& elem);
 	void push_back(const T& elem);
 	void resize(const size_t vSize) noexcept;
 	void insert(const unsigned position, const T& elem);
 	void erase(const unsigned firstPosition, const unsigned secondPosition);
-	void clear();
+	void clear() noexcept;
 
-	T& operator[](const int index) const {
+	T& at(const int index) const {
+		return index < vSize ? A[index] : throw VectorException(VectorException::ErrorsCodes::OUT_OF_RANGE);
+	}
+	T& operator[](const int index) const noexcept {
 		return A[index];
 	}
-	friend std::ostream& operator<<(std::ostream& os, const Vector& v) {
-		for (int i = 0; i < v.vSize; ++i) {
-			os << v[i] << " ";
-		}
-		os << std::endl;
-		os << "vSize: " << v.vSize << " " << "maxSize: " << v.maxSize << std::endl;
-		os << "===============================" << std::endl;
 
-		return os;
+	void sort() noexcept {
+		for (size_t i = 0; i < vSize - 1; ++i) {
+			for (size_t j = i + 1; j < vSize; ++j) {
+				if (A[i] > A[j]) {
+					T&& temp = std::move(A[i]);
+					A[i] = std::move(A[j]);
+					A[j] = temp;
+				}
+			}
+		}
+	}
+
+	int find(T&& value) noexcept {
+		for (size_t i = 0; i < vSize; ++i) {
+			if (A[i] == value) {
+				return i;
+			}
+		}
+
+		return -1;
 	}
 };
 
 template<class T>
-Vector<T>::Vector() {
-	maxSize = 30;
+Vector<T>::Vector() noexcept {
+	maxSize = 15;
 	A = new T[maxSize];
 	vSize = 0;
 }
 
 template<class T>
-Vector<T>::Vector(const size_t vSize) {
+Vector<T>::Vector(const size_t vSize) noexcept {
 	this->maxSize = vSize * 2;
 	this->vSize = vSize;
 	A = new T[vSize];
 	for (int i = 0; i < vSize; ++i) {
 		A[i] = 0;
 	}
+}
+
+template<class T>
+Vector<T>::Vector(const Vector<T>& v) noexcept {
+	maxSize = v.maxSize;
+	vSize = v.vSize;
+	A - new T[maxSize];
+	for (int i = 0; i < v.vSize; ++i) {
+		A[i] = v.A[i];
+	}
+	return *this;
 }
 
 template<class T>
@@ -90,22 +116,11 @@ void Vector<T>::alloc_new() {
 }
 
 template<class T>
-Vector<T>::Vector(const T*& A) {
-	T* tempArr = new T[maxSize];
-	for (int i = 0; i < vSize; ++i) {
-		tempArr[i] = A[i];
-	}
-
-	delete[] A;
-	A = tempArr;
-}
-
-template<class T>
 void Vector<T>::push_back(const T& elem) {
 	if (vSize + 1 > maxSize) {
 		alloc_new();
 	}
-	
+
 	A[vSize] = elem;
 	vSize++;
 }
@@ -133,7 +148,8 @@ void Vector<T>::resize(const size_t newSize) noexcept {
 		for (int i = newSize; i < vSize; ++i) {
 			pop_back();
 		}
-	} else {
+	}
+	else {
 		maxSize = newSize * 2;
 		T* tempArr = new T[maxSize];
 		for (int i = 0; i < vSize; ++i) {
@@ -184,15 +200,18 @@ void Vector<T>::erase(const unsigned firstPosition, const unsigned secondPositio
 
 		delete[] A;
 		A = tempArr;
-	} else {
-		throw VectorException(ErrorsCodes::OUT_OF_RANGE);
+	}
+	else {
+		throw VectorException(VectorException::ErrorsCodes::OUT_OF_RANGE);
 	}
 }
 
 template<class T>
-void Vector<T>::clear() {
+void Vector<T>::clear() noexcept {
 	delete[] A;
 	maxSize = 15;
 	A = new T[maxSize];
 	vSize = 0;
 }
+
+#endif _Vector
