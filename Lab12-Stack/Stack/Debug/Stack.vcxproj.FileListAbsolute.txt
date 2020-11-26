@@ -1,2 +1,0 @@
-D:\Programming\Labs C++ Variant3\Lab12-Stack\Stack\Debug\Stack.exe
-D:\Programming\Labs C++ Variant3\Lab12-Stack\Stack\Debug\Stack.pdb
