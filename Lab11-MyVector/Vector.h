@@ -63,7 +63,6 @@ public:
 			}
 		}
 	}
-
 	int find(T&& value) noexcept {
 		for (size_t i = 0; i < vSize; ++i) {
 			if (A[i] == value) {

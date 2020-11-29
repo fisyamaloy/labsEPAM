@@ -15,7 +15,7 @@ void showVector(const Vector<T>& v) {
 }
 
 int main() {
-	const size_t length = 300;
+	const size_t length = 100000;
 	Vector<int> v1(length);
 	for (size_t i = 0; i < length; ++i) {
 		v1[i] = pow((-1), i) * (i + 5);

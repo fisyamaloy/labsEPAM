@@ -20,17 +20,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vector.h">
-      <Filter>Исходные файлы</Filter>
+    <ClInclude Include="ContainersExceptions.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="VectorException.h">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ContainersExceptions.h">
-      <Filter>Исходные файлы</Filter>
+    <ClInclude Include="Vector.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
