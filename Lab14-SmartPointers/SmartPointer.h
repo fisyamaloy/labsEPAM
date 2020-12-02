@@ -3,32 +3,27 @@
 template<class T>
 class SmartPointer {
 public:
-	SmartPointer() : ptr(new T{T()}) {
+	T* get() const noexcept {
+		return ptr;
 	}
 
-	SmartPointer(T* p) : ptr(p) {
-		std::cout << p << " Constructor SmartPointer" << std::endl;
-	}
+	virtual void release() noexcept = 0;
 
-	T& operator*() const {
+	virtual void reset() noexcept = 0;
+
+	virtual void reset(T* right) noexcept = 0;
+
+	T& operator*() const noexcept {
 		return *ptr;
 	}
-	T* operator->() const {
+
+	T* operator->() const noexcept {
 		return ptr;
 	}
 
 	friend std::ostream& operator << (std::ostream& out, const SmartPointer& otherSmart) {
 		out << otherSmart.ptr;
 		return out;
-	}
-
-	virtual void swap(SmartPointer<T>& right) noexcept {
-		if (this != &right) {
-			/*T thisValue = *ptr;
-			*ptr = *right.ptr;
-			*right.ptr = thisValue;*/
-			std::swap(this->ptr, right.ptr);
-		}
 	}
 
 protected:

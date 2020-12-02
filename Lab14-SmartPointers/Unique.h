@@ -5,20 +5,48 @@ template<class T>
 class Unique : public SmartPointer<T> {
 	using SmartPointer<T>::ptr;
 public:
-	Unique() : SmartPointer<T>() {}
-	Unique(T* p) : SmartPointer<T>(p) {
-		std::cout << p << "Constructor unique" << std::endl;
+	explicit Unique() noexcept : ptr(new T{}) {
+		std::cout << "Default constructor unique" << std::endl;
 	}
+
+	explicit Unique(T* p) noexcept {
+		ptr = p ;
+		std::cout << "Constructor unique" << std::endl;
+	}	
+
 	Unique(const Unique<T>&) = delete;
+	
+	Unique<T>& operator = (const Unique<T>&) = delete;
+
 	Unique(Unique<T>&& other) noexcept {
+		std::cout << "Constructor RVALUE unique" << std::endl;
 		ptr = other.ptr;
 		other.ptr = nullptr;
 	}
 
-	~Unique() noexcept {
-		std::cout << ptr << "Unique Destructor" << std::endl;
-		delete ptr;
+	void swap(Unique<T>& right) noexcept {
+		if (this != &right) {
+			std::swap(this->ptr, right.ptr);
+		}
+	}
+	
+	void release() noexcept {
+		ptr = nullptr;
 	}
 
-	Unique<T>& operator = (const Unique<T>&) = delete;
+	void reset() noexcept override {
+		delete this->ptr;
+		this->ptr = new T();
+	}
+
+	void reset(T* right) noexcept override {
+		delete this->ptr;
+		this->ptr = right;
+	}
+
+	~Unique() noexcept {
+		std::cout << "Unique destructor" << std::endl;
+		delete ptr;
+		ptr = nullptr;
+	}
 };
