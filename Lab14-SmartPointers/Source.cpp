@@ -1,37 +1,59 @@
 ﻿#include <iostream>
-#include "Unique.h"
 #include <string>
+#include <list>
+#include <vector>
+#include <algorithm>
+#include "Student.h"
 #include <memory>
-#include "Shared.h"
-#define DEBUG
 
 using namespace std;
 
-struct Car {
-	string model;
-	Car(string model = "kopeyka") {
-		this->model = model;
-	}
-
-	friend std::ostream& operator << (std::ostream& out, const Car& car) {
-		out << car.model;
-		return out;
-	}
-};
+void showStudentsPointersVector(vector<shared_ptr<Student>>::const_iterator cbegin, vector<shared_ptr<Student>>::const_iterator cend) {
+	cout << "Show students: " << endl;
+	for_each(cbegin, cend, [](const shared_ptr<Student>& student) {
+		cout << *student << endl;
+	});
+	cout << "===============================" << endl;
+}
 
 int main() {
-	Unique<Car> A{ new Car("Max") };
-	cout << *A << ' ' << *(A.get()) << endl;
-	Unique<Car> B{ std::move(A) };
-	Unique<Car> C{ new Car("Audi") };
+	auto showStudentsList = [](const list<Student>& students) {
+		cout << "Show students: " << endl;
+		for_each(students.cbegin(), students.cend(), [](const Student& student) {
+			cout << student << endl;
+		});
+		cout << "===============================" << endl;
+	};
 
-	B.release();
-	C.reset();
+	Student st1("Fisyuk Danil Sergeevich", "PM-21", 18, 2);
+	Student st2("Plotko Anton Aleksandrovich", "MI-21", 17, 2);
+	Student st3("Zavadich Maxim Sergeevich", "PM-21", 20, 2);
+	Student st4("Glina Yaroslav Nikolaevich", "PM-21", 19, 2);
+	Student st5("Nogach Maxim Genadievich", "PM-21", 18, 2);
 
-	B.swap(C);
-	cout << *B << ' ' << *B.get() << endl;
+	list<Student> students = { st1, st2,st3,st4,st5 };
+	showStudentsList(students);
 
-	/*Shared<int> A{ new int{3} };
-	Shared<int> B(A);
-	Shared<int> C{ A };*/
+	students.sort(Student::CompareByFio());
+	showStudentsList(students);
+
+	auto showStudentsPointersVector = [](const vector<shared_ptr<Student>>& students) {
+		cout << "Show students: " << endl;
+		for_each(students.cbegin(), students.cend(), [](const shared_ptr<Student>& student) {
+			cout << *student << endl;
+			});
+		cout << "===============================" << endl;
+	};
+
+	shared_ptr<Student> ptrSt1(new Student(st1));
+	shared_ptr<Student> ptrSt2(new Student(st2));
+	shared_ptr<Student> ptrSt3(new Student(st3));
+	shared_ptr<Student> ptrSt4(new Student(st4));
+	shared_ptr<Student> ptrSt5(new Student(st5));
+
+	vector<shared_ptr<Student>> studentsPointers{ ptrSt1, ptrSt2, ptrSt3, ptrSt4, ptrSt5 };
+	sort(studentsPointers.begin(), studentsPointers.end(), Student::CompareByAge());
+	showStudentsPointersVector(studentsPointers);
+
+	studentsPointers.clear();
 }
