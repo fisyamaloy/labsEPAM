@@ -8,14 +8,6 @@
 
 using namespace std;
 
-void showStudentsPointersVector(vector<shared_ptr<Student>>::const_iterator cbegin, vector<shared_ptr<Student>>::const_iterator cend) {
-	cout << "Show students: " << endl;
-	for_each(cbegin, cend, [](const shared_ptr<Student>& student) {
-		cout << *student << endl;
-	});
-	cout << "===============================" << endl;
-}
-
 int main() {
 	auto showStudentsList = [](const list<Student>& students) {
 		cout << "Show students: " << endl;
