@@ -1,5 +1,5 @@
 #pragma once
-#include "ShapesI.h"
+#include "IShapes.h"
 #include <vector>
 #include <numeric>
 #include <iostream>
@@ -13,20 +13,26 @@
 	2) ѕоддерживаетс€ принцип SOLID - OCP: вместо того, чтобы вычисл€ть площади фигур с помощью проверки по типу,
 	вычисление площади производитс€ внутри наших фигур. ћы избавл€емс€ от кучи проверок, и делаем нашу систему 
 	открытой дл€ расширени€. “еперь мы можем создать другой класс формы и передать его при вычислении суммы, не наруша€ наш код.
-	3)
+	3) ѕоддерживаетс€ принцип SOLID - LSP: дл€ всех подтипов родительского класса будет выполн€тьс€ один и тот же код без падений.
+	4) ѕоддерживаетс€ принцип SOLID - DIP: ¬се классы сделаны через интерфейсы.
 */
 
-class AreaCalculator {
-private:
-	std::vector<ShapeI*> shapes;
+class IAreaCalculator {
 public:
-	AreaCalculator(std::vector<ShapeI*>&& shapes = {}) {
+	virtual double getAreasSum() const = 0;
+};
+
+class AreaCalculator : public IAreaCalculator {
+private:
+	std::vector<IShape*> shapes;
+public:
+	AreaCalculator(std::vector<IShape*>&& shapes = {}) {
 		this->shapes = shapes;
 		shapes.clear();
 	}
 
 	double getAreasSum() const {
-		auto sum = std::accumulate(shapes.cbegin(), shapes.cend(), 0, [](double accumulator, const ShapeI* shape) {
+		auto sum = std::accumulate(shapes.cbegin(), shapes.cend(), (double)0, [=](double accumulator, const IShape* shape) -> double {
 			return accumulator + shape->getArea();
 		});
 
@@ -34,20 +40,27 @@ public:
 	}
 };
 
-class SumCalculatorOutputter {
+
+class ISumCalculatorOutputter {
+public:
+	virtual void console() const = 0;
+	virtual void file(std::string path) const = 0;
+};
+
+class AreaCalculatorOutputter : public ISumCalculatorOutputter {
 private:
 	AreaCalculator areas;
 public:
-	SumCalculatorOutputter(const AreaCalculator& _areas) : areas(_areas) { }
+	AreaCalculatorOutputter(const AreaCalculator& _areas) : areas(_areas) { }
 
-	void console() const {
+	void console() const override {
 		std::cout << areas.getAreasSum() << std::endl;
 	}
 
-	void file(std::string path) const {
+	void file(std::string path) const override {
 		std::ofstream fout(path);
 		assert(fout);
-		fout << areas.getAreasSum() << std::endl;
+		fout << areas.getAreasSum() << '\n';
 		fout.close();
 	}
 };

@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <vector>
-#include "ShapesI.h"
+#include "IShapes.h"
 #include "Rectangle.h"
 #include "Circle.h"
 #include "AreaCalculator.h"
@@ -10,12 +10,10 @@ using std::cin;
 using std::endl;
 
 int main() {
-	std::vector<ShapeI*> shapes{ new Rectangle(2, 3), new Circle(2) };
-	
+	std::vector<IShape*> shapes{ new Rectangle(2, 3), new Circle(3) };
 	AreaCalculator AC{std::move(shapes)};
 	
-	SumCalculatorOutputter outputSum(AC);
+	AreaCalculatorOutputter outputSum(AC);
 	outputSum.console();
 	outputSum.file("AreaSum.txt");
-
 }

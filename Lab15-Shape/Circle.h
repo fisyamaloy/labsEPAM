@@ -1,9 +1,10 @@
 #pragma once
-#include "ShapesI.h"
+#include "IShapes.h"
+#include <cmath>
 
-class Circle : public ShapeI {
+class Circle : public IShape {
 private:
-	const double PI = 3.14;
+	const double PI = acos(-1);
 	double radius;
 public:
 	Circle(const double _radius = 0) : radius(_radius) {

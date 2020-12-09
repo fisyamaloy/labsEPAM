@@ -1,6 +1,6 @@
 #pragma once
-#include "ShapesI.h"
-class Parallelepiped : public SolidShapeI {
+#include "IShapes.h"
+class Parallelepiped : public ISolidShape {
 private:
 	double length;
 	double width;

@@ -1,7 +1,7 @@
 #pragma once
-#include "ShapesI.h"
+#include "IShapes.h"
 
-class Rectangle : public ShapeI {
+class Rectangle : public IShape {
 private:
 	double height;
 	double width;
