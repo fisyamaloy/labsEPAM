@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-Student*& getStudents(int n) {
+Student*& getStudents(const int n) {
 	Student* students = new Student[n];
 	for (int i = 0; i < n; ++i) {
 		std::cin >> students->name >> students->lastName >> students->faculty >> students->group >>
@@ -32,4 +32,27 @@ int main() {
 	cout << endl << "Value of ukaz change on " << sizeof(students) << endl;
 
 	cout << "Adresses of neighbour struct's fields" << endl;
+	cout << "(string) " << &students->email << endl
+		<< "(string) " << &students->group << endl
+		<< "(string) " << &students->lastName << endl
+		<< "(string) " << &students->name << endl
+		<< "(int) " << &students->faculty << endl;
+	
+	struct First {
+		char A;
+		char B;
+		int C;
+		char D;
+	} first;
+
+	struct Second {
+		char A;
+		char B;
+		char D;
+		int C;
+	} second;
+
+	cout << "First: " << sizeof(first) << ", Second: " << sizeof(second) << endl;
+
+	return 0;
 }
